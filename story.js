@@ -1,22 +1,48 @@
-// 
+window.onload = init;
+
+var storyOutput;
+var answers = []; // Array of the questions + answers
+var answer;
+var storyCompleted = Boolean('false'); // turns to true once story is completed
+
+function init()
+{
+storyOutput = "Hey! This is an interactive story. Do you want to take part?";
+updateStory(); 
+}
+
+//Clears input field and replaces text
 function updateStory() {
-  var finalAnswer = storyOutput;
-  document.getElementById('story').innerHTML = finalAnswer;
+  var nextQuestion = storyOutput;
+  document.getElementById('answerField').value= "";
+  document.getElementById('story').innerHTML = nextQuestion;
 };
 
-// 
-var storyOutput = "Hey! This is an interactive story. Do you want to take part?";
-updateStory();
-
 //
-document.getElementById('javascriptButton').onclick = function interpretAnswer() {
-  var inputResults = document.getElementById('answerField').value;
-  answer = inputResults.toUpperCase();
+function interpretAnswer() {
+
+  //Retrieve question and answer
+  var question = document.getElementById('story').innerHTML;
+  answer = document.getElementById('answerField').value;
+ 
+  //Creates an entry (q+a)
+  var entry = new Array();
+  entry.push({
+		question: question,
+        answer: answer
+   });
+    //Push array of (q+a)  into total q+a list
+    answers.push(entry);
+    sendResults();
   checkAnswer();
 };
 
 //
 function checkAnswer() {
+    
+    // Story line tree logic in here
+    
+    
   if (answer === "YES") { 
     storyOutput = "Excellent!";
   }
@@ -32,3 +58,10 @@ function checkAnswer() {
   };
   updateStory();
 }
+
+function sendResults()
+{
+  //E-mail got banned while using some library for sending emails. Not again please :D
+    
+}
+
