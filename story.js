@@ -16,9 +16,11 @@ function updateStory() {
   var nextQuestion = storyOutput;
   document.getElementById('answerField').value= "";
   document.getElementById('story').innerHTML = nextQuestion;
+  document.getElementById('option1').firstChild.data ="Option One"; // Enter nextOption1 here
+  document.getElementById('option2').firstChild.data ="Option Two"; //Enter nextOption2 here
 };
 
-//
+// There are currently three functions for input: One for text field, one for one button and another one for the second button..
 function interpretAnswer() {
 
   //Retrieve question and answer
@@ -33,6 +35,45 @@ function interpretAnswer() {
    });
     //Push array of (q+a)  into total q+a list
     answers.push(entry);
+    alert(JSON.stringify(answers));
+    sendResults();
+  checkAnswer();
+};
+
+function optionOne() {
+    alert("option one pressed");
+  //Retrieve question and answer
+  var question = document.getElementById('story').innerHTML;
+  answer = document.getElementById('option1').firstChild.data;
+ 
+  //Creates an entry (q+a)
+  var entry = new Array();
+  entry.push({
+		question: question,
+        answer: answer
+   });
+    //Push array of (q+a)  into total q+a list
+    answers.push(entry);
+    alert(JSON.stringify(answers));
+    sendResults();
+  checkAnswer();
+};
+
+function optionTwo() {
+    alert("option two pressed");
+  //Retrieve question and answer
+  var question = document.getElementById('story').innerHTML;
+  answer = document.getElementById('option2').firstChild.data;
+ 
+  //Creates an entry (q+a)
+  var entry = new Array();
+  entry.push({
+		question: question,
+        answer: answer
+   });
+    //Push array of (q+a)  into total q+a list
+    answers.push(entry);
+    alert(JSON.stringify(answers));
     sendResults();
   checkAnswer();
 };
@@ -41,7 +82,6 @@ function interpretAnswer() {
 function checkAnswer() {
     
     // Story line tree logic in here
-    
     
   if (answer === "YES") { 
     storyOutput = "Excellent!";
