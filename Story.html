@@ -1,10 +1,19 @@
-<div id="story"></div>
-
-<input id="answerField" name="number" placeholder="Answer Here"/>    
-<button id="javascriptButton">Submit Answer</button>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Documenting: THE STORY</title>
+        <link rel ="stylesheet" type = "text/css" href ="Story.css">
+        <script src ="story.js"></script>
+    </head>
+    <body>     
+    <div id="story"></div>
+        <input id="answerField" name="number" placeholder="Answer Here"/>    
+        <button onclick = "interpretAnswer()"id="submit">Submit Answer</button>
+    </body>
+</html>
 
 <!-- Things to do:
       Label each step of the JavaScript program
-      Add a next question to the 'Yes' answer results
-      Figure out how to clear the answer field between questions
+      Add a next question to the 'Yes' answer results -> Change the nextStory var accordingly to the next question.
 -->
